@@ -44,9 +44,34 @@
             <h2>停止中</h2>
           </div>
 
-          <h2><div id="recognizedText"></div>
-          <div id="recognizedDetail"></div></h2>
+        <div class="voice"  ng-controller="ChatController">
+        <div class="row controls">
+           <form ng-submit="send()">
+            <div class="input-append span7">
+               <input type="text" class="span6" id="recognizedText" ng-model="textvoice" placeholder="音声認識">
+               <input type="submit" class="span1 btn btn-primary" value="Send" ng-disabled="!textvoice">
+            </div>
 
+          </form>
+          </div>
+          <!-- メッセージ出力部 -->
+          <table class="table table-striped table-bordered">
+            <tbody>
+              <tr ng-repeat="msg in messages3">
+                <td class="span5" ng-bind="msg.text"></td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+
+<!--           <form ng-submit="send()">
+              <h2><div id="recognizedText">a</div>
+              <input type="submit" class="span1 btn btn-primary" value="Send" ng-disabled="!text">
+          </form>
+          <div id="recognizedDetail"></div></h2>
+ -->
         </div>
 
         <div class="divider"></div>
@@ -56,7 +81,6 @@
         <!-- メッセージ入力用 -->
         <div class="row controls">
            <form ng-submit="send()">
-            <!-- <div class="span2"><input type="text" class="input-block-level" ng-model="name" ng-change="setName()" placeholder="Your Name"></div> -->
             <div class="input-append span7">
               <input type="text" class="span6" ng-model="text" placeholder="補足説明を入力">
               <input type="submit" class="span1 btn btn-primary" value="Send" ng-disabled="!text">
@@ -101,13 +125,6 @@
 
           <!-- メッセージ出力部 -->
           <table class="table table-striped table-bordered">
-<!--             <thead>
-              <tr>
-                <th class="span1">名前</th>
-                <th class="span5">テキスト</th>
-              </tr>
-            </thead>
- -->
             <tbody>
               <tr ng-repeat="msg in messages2">
                 <td class="span1" ng-bind="msg.name"></td>

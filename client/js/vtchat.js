@@ -3,10 +3,12 @@
 
           $scope.messages = [];
           $scope.messages2 = [];
+          $scope.messages3 = [];
           $scope.roster = [];
           $scope.name = '';
           $scope.text = '';
           $scope.text2 = '';
+          $scope.textvoice = '';
 
           socket.on('connect', function () {
             $scope.setName();
@@ -24,6 +26,12 @@
             $scope.messages2.push(msg);
             $scope.$apply();
           });
+          socket.on('message3', function (msg) {
+            // 一旦クリア
+            $scope.messages3 = [];
+            $scope.messages3.push(msg);
+            $scope.$apply();
+          });
 
           socket.on('roster', function (names) {
             $scope.roster = names;
@@ -39,6 +47,10 @@
             if ( $scope.text2 ){
               socket.emit('message2', $scope.text2);
               $scope.text2 = '';
+            }
+            if ( $scope.textvoice ){
+              socket.emit('message3', $scope.textvoice);
+              $scope.textvoice = '';
             }
           };
 

@@ -41,12 +41,15 @@ recognition.onresult = function(event){
     for (var i = event.resultIndex; i<results.length; i++){
         //認識の最終結果
         if(results[i].isFinal){
-            $("#recognizedText").text(results[i][0].transcript);
+//            $("#recognizedText").text(results[i][0].transcript);
+            $("#recognizedText").val(results[i][0].transcript).change();
+
         }
 
         //認識の中間結果
         else{
-            $("#recognizedText").text(results[i][0].transcript);
+//            $("#recognizedText").text(results[i][0].transcript);
+            $("#recognizedText").val(results[i][0].transcript).change();
         }
     }
 };
